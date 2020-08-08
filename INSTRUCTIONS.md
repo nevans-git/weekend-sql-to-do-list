@@ -32,7 +32,7 @@ Use CSS styling to move the aesthetic of the page beyond the vanilla HTML look:
 
 We would recommend you spend some time thinking about how to approach this problem. Think through all the logic that will be needed prior to writing any code. Take your time, relax, remember that impostor syndrome is real, and that you are capable of knocking this out of the park!
 
-### Create a Database
+### Create a Database 
 
 Be sure to create a new database through Postico. Use the name `weekend-to-do-app`. You will need to use this name in your database connection configuration on your server.
 
