@@ -43,3 +43,26 @@ function getTasks(){
     })
     
 } // end getTasks
+
+function saveTask(newTask){
+    console.log('in saveTask', newTask);
+    if(newTask.status === 'D'){
+        newTask.status = true;
+    }
+    else if(newTask.status = 'ND'){
+        newTask.status = false;
+    }
+
+    // ajax call to server to get new tasks
+    $.ajax({
+        method: 'POST',
+        url: '/tasksToDo',
+        data: newTask
+    }).then( function (response) {
+        console.log(response);
+        getTasks();
+    }).catch(function (error) {
+        console.log('error in newTask post:', error);
+    })
+    
+}
