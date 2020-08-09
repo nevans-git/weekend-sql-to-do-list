@@ -33,7 +33,7 @@ toDoRouter.get('/', (req, res) => {
         console.log('error getting tasks', error);
         res.sendStatus(500);       
     })
-})
+});
 
 
 // Setup POST
@@ -44,15 +44,14 @@ toDoRouter.post('/', (req, res) => {
 
     pool.query(queryText, [
         req.body.task,
-        req.body.status
+        req.body.status,
     ]).then(result => {
         res.sendStatus(201);
     }).catch(error => {
-        console.log('error posting ');
+        console.log('error posting ', error);
         res.sendStatus(500);
-        
     })
-})
+});
 
 
 // Setup PUT
@@ -85,11 +84,29 @@ toDoRouter.put('/:id', (req, res) => {
         
     })
     
-})
+});
 
 
 // Setup Delete (complete once you setup delete button on client-side)
+toDoRouter.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    console.log('Delete route with id of', id);
+    let queryText = `
+    DELETE FROM "tasks"
+    WHERE "id" = $1
+    `;
+
+    // sending query to database  with ID as parameter
+    pool.query(queryText, [id]).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error in GET:', error);
+        res.sendStatus(500);
+    })
+});
+
+// NEED TO SETUP COMPLETED ACTION WITH CSS FUNCTIONALITY (turning completed row a different color when done)
 
 
 
-modules.exports = toDoRouter;
+module.exports = toDoRouter;
