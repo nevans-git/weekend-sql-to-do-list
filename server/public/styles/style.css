@@ -1,0 +1,36 @@
+.completeBtn{
+    background-color: green;
+}
+
+body{
+    background-image: url(todo-list-background.jpeg);
+    background-size: cover;
+}
+
+.tableBackground{
+    margin-top: 45px;
+    background-color: ivory;
+    float: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 1px solid black; */
+    border-radius: 10px 10px 10px 10px;
+    border-collapse: collapse;
+}
+
+#inputStatus, #inputTask{
+    background-color: ivory;
+    float: center;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+
+}
+
+
+h1{
+    text-align: left;
+    color: ivory;
+    
+}
+

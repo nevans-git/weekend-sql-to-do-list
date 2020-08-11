@@ -21,21 +21,16 @@ function setupClickListeners(){
         // get user input and put in an object
         // test object
         let taskToSend = {
-            taskName: $('#inputTask').val(),
-            taskStatus: $('#inputStatus').val()
+            task: $('#inputTask').val(),
+            status: $('#inputStatus').val()
         }
         // calling saveTask with the new object
         saveTask(taskToSend);
     }); // end addBtn
 
-    $('.deleteBtn').on('click', function (){ // delete click listener inside setupClickListeners
-        console.log('in dynamic delete button!');
 
-        $('.deleteBtn').val('');
 
-    }) // end of dynamic deleteBtn
-
-    $('#viewTasks').on('click', '.completeBtn', function () {
+    $('#viewTasks').on('click', '.deleteBtn', function () {
         console.log('delete button clicked');
 
         let taskToDelete = $(this).closest('tr').data('taskid');
@@ -55,6 +50,18 @@ function setupClickListeners(){
         
         
     }) // end viewTasks function
+
+    $('#viewTasks').on('click', '.completeBtn', function (taskId){ // turning row green (complete button)
+        console.log('complete button clicked');
+
+        // let taskToComplete = $(this).closest('tr').data('taskid');
+        // console.log(taskToComplete);
+        $.ajax({
+            method: 'PUT',
+            url: `/todo/${taskId}`,
+            data: {status: true}
+        })
+    });
 }
 
 
@@ -78,12 +85,14 @@ function getTasks(){
                 toDoTask.status = 'ND';
             }
 
-            $('#viewTasks').append(`<tr data-taskid="${toDoTask.id}">
-                <td>${toDoTask.task}</td>
-                <td>${toDoTask.status}</td>
-                <td><button class="completeBtn">Complete</button></td>
-                <td><button class="deleteBtn">Delete</button></td>
-            </tr>`);
+            $('#viewTasks').append(`
+                <tr data-taskid="${toDoTask.id}">
+                    <td>${toDoTask.task}</td>
+                    <td>${toDoTask.status}</td>
+                    <td><button class="completeBtn">Complete</button></td>
+                    <td><button class="deleteBtn">Delete</button></td>
+                </tr>
+            `);
         } // end of for loop
     }).catch( function (error) {
         console.log('error in task GET', error); 
@@ -107,7 +116,7 @@ function saveTask(newTask){
         data: newTask
     }).then( function (response) {
         console.log(response);
-        getTasks();
+        getTasks(); // calling get task
     }).catch(function (error) {
         console.log('error in newTask post:', error);
     })

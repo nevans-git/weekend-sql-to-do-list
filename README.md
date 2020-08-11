@@ -1,15 +1,15 @@
 # The To-Do App
  - [x] create the database with the name of 'weekend-to-do-app' (postico)
- - [] create database table in the database.sql file & postico 
- - [] setup database connection
- - [] configure 'pool' & pool connection/error
- - [] setup GET (router-side)
-    - [] setup GET (client-side)
- - [] setup POST (router-side)
-    - [] setup GET (client-side)
- - [] setup PUT (router-side)
- - [] setup Delete (router-side)
-    - [] setup Delete (client-side)
+ - [x] create database table in the database.sql file & postico 
+ - [x] setup database connection
+ - [x] configure 'pool' & pool connection/error
+ - [x] setup GET (router-side)
+    - [x] setup GET (client-side)
+ - [] setup POST (router-side) **NOT WORKING**
+    - [] setup POST (client-side) **NOT WORKING**
+ - [] setup PUT (router-side) 
+ - [x] setup Delete (router-side)
+    - [x] setup Delete (client-side)
 
     
 

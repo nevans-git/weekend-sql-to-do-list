@@ -56,8 +56,12 @@ toDoRouter.post('/', (req, res) => {
 
 // Setup PUT
 toDoRouter.put('/:id', (req, res) => {
+    console.log(req.body);
+    console.log(req.params.id); // remember to look at what you have access to
+    
+    
     let todo = req.body;
-    let id = req.params.id;
+    let id = req.params.id; // might have to change .id to .status
 
     console.log(`Updating todo ${id} with`, todo);
 
